@@ -19,9 +19,10 @@ Resources:
       Runtime: python37
       CodeUri: lambda/
       Events:
-        Type: SNS
-        Properties:
-          Topic: !Ref SNSTopic
+        InvokeFromSNS:
+          Type: SNS
+          Properties:
+            Topic: !Ref SNSTopic
 
   SSMParameter:
     Type: AWS::SSM::Parameter
