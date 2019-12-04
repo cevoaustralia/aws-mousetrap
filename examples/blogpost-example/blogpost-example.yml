@@ -34,6 +34,6 @@ Outputs:
   InputArn:
     Description: The service to put the message into
     Value: !Ref SNSTopic
-  OutputArn:
+  OutputName:
     Description: The service to get the message from
     Value: !Ref SSMParameter
