@@ -20,8 +20,10 @@ input and output are entirely up to you.
 
 ## Rules
 
-1. The goal is to use as many distinct services as possible. Using the same service multiple times only counts for 1 point (eg 5
-   SNS topics is still only worth 1 point)
+1. The goal is to use as many distinct services as possible.
+1. Using the same service multiple times only counts for 1 point (eg 5 SNS topics is still only worth 1 point; using Tags on
+   multiple services to pass the message only counts for 1 point because it's the Tagging service)
+1. All services must be provisioned within a single AWS account
 1. The message must be a 64-byte GUID generated outside the "mousetrap" and passed to the "input" service by some API call
 1. The message must be consumed from the "output" service by an API call, and must be identical to the input message
 1. The construction **must** by done through repeatable methods -- whether this is CloudFormation, Terraform, CDK, etc is up to
