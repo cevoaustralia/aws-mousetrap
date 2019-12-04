@@ -1,0 +1,38 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: An example of Mousetrap from the blog post
+Transform: AWS::Serverless-2016-10-31
+
+Resources:
+  SNSTopic:
+    Type: AWS::SNS::Topic
+    Properties: {}
+
+  TransferLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: message_passer.lambda_handler
+      Environment:
+        Variables:
+          SSM_PARAMETER: !Ref SSMParameter
+      Policies:
+        - arn:aws:iam::aws:policy/AmazonSSMFullAccess
+      Runtime: python37
+      CodeUri: lambda/
+      Events:
+        Type: SNS
+        Properties:
+          Topic: !Ref SNSTopic
+
+  SSMParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Type: String
+      Value: "unset"
+
+Outputs:
+  InputArn:
+    Description: The service to put the message into
+    Value: !Ref SNSTopic
+  OutputArn:
+    Description: The service to get the message from
+    Value: !Ref SSMParameter
