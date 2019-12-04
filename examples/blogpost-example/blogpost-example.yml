@@ -16,7 +16,7 @@ Resources:
           SSM_PARAMETER: !Ref SSMParameter
       Policies:
         - arn:aws:iam::aws:policy/AmazonSSMFullAccess
-      Runtime: python37
+      Runtime: python3.7
       CodeUri: lambda/
       Events:
         InvokeFromSNS:
