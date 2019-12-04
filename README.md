@@ -12,7 +12,7 @@ In the case of AWS Mousetrap, the goal is slightly different. There aren't any m
 is this:
 
 ```
-Send a 64-byte message using as many different AWS services as possible
+Send a message using as many different AWS services as possible
 ```
 
 That's it. The service you start from, the service you end up in are entirely up to you. The services you use in between the
@@ -24,7 +24,7 @@ input and output are entirely up to you.
 1. Using the same service multiple times only counts for 1 point (eg 5 SNS topics is still only worth 1 point; using Tags on
    multiple services to pass the message only counts for 1 point because it's the Tagging service)
 1. All services must be provisioned within a single AWS account
-1. The message must be a 64-byte GUID generated outside the "mousetrap" and passed to the "input" service by some API call
+1. The message should be a 128-bit UUID generated outside the "mousetrap" and passed to the "input" service by some API call
 1. The message must be consumed from the "output" service by an API call, and must be identical to the input message
 1. The construction **must** by done through repeatable methods -- whether this is CloudFormation, Terraform, CDK, etc is up to
    you but non-AWS services don't count (eg Terraform doesn't count as a service)
