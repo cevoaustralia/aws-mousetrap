@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: An example of Mousetrap from the blog post
+Description: pkdcloud Mousetrap
 Transform: AWS::Serverless-2016-10-31
 
 Resources:
@@ -29,6 +29,8 @@ Resources:
     Properties:
       Type: String
       Value: "unset"
+
+
 
 Outputs:
   InputArn:

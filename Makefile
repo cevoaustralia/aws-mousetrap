@@ -1,15 +1,19 @@
-STACK=blogpost-mousetrap
-TEMPLATE=blogpost-example.yml
-BUCKET=cmp-proud-refrigerator
+STACK=pkdcloud-mousetrap
+TEMPLATE=mousetrap.yml
+BUCKET=pkdcloud-mousetrap
 
 all: deploy
 
-deploy: package
+deploy: s3 package
 	aws cloudformation deploy \
 		--stack-name $(STACK) \
 		--template-file rendered.yml \
 		--capabilities CAPABILITY_IAM \
 		--no-fail-on-empty-changeset
+
+s3: 
+	aws s3 mb \
+		s3://$(BUCKET) 
 
 package:
 	aws cloudformation package \
@@ -22,6 +26,8 @@ clean:
 		--stack-name $(STACK) && \
 	aws cloudformation wait stack-delete-complete \
 		--stack-name $(STACK)
+	aws s3 rb \
+		s3://$(BUCKET) --force
 
 publish: message get-topic-arn
 	aws sns publish \
