@@ -1,6 +1,6 @@
 # AWS Mousetrap - blog post example
 
-Improvements made to the original example. This will also create and destroy the s3 bucket too and run a validation at the end.
+Improvements made to the original example. This will also create and destroy the s3 bucket too.
 
 ## Creating the stack
 
