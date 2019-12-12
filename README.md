@@ -1,4 +1,4 @@
-# AWS Mousetrap - blog post example
+# AWS Mousetrap - pkdcloud
 
 Improvements made to the original example. This will also create and destroy the s3 bucket too.
 
